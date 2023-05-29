@@ -11,7 +11,7 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
+  - Dead
   - 
   - 
   - 
@@ -50,6 +50,12 @@ TagManager:
   - name: Background 2
     uniqueID: 646584009
     locked: 0
+  - name: Background 3
+    uniqueID: 1853466647
+    locked: 0
   - name: Playground 0
     uniqueID: 1599942733
+    locked: 0
+  - name: Dead
+    uniqueID: 4130734493
     locked: 0
