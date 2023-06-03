@@ -79,6 +79,7 @@ public class PlayerMovement : MonoBehaviour
         else if (rb.velocity.y < -.1f)
         {
             state = MovementState.falling;
+            anim.SetBool("isJumping", false);
         }
 
       //  anim.SetInteger("state", (int)state);

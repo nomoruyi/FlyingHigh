@@ -5,20 +5,24 @@ using UnityEngine.UI;
 
 public class ItemCollector : MonoBehaviour
 {
-    private int cherries = 0;
+    private int coins = 0;
 
-    [SerializeField] private Text cherriesText;
+   // [SerializeField] private Text cherriesText;
 
     [SerializeField] private AudioSource collectionSoundEffect;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Cherry"))
+        if (collision.gameObject.CompareTag("Coin"))
         {
+            Debug.Log("Coin");
             collectionSoundEffect.Play();
+            coins++;
+
             Destroy(collision.gameObject);
-            cherries++;
-            cherriesText.text = "Cherries: " + cherries;
+       
+          //  cherriesText.text = "Cherries: " + coins;
         }
     }
+
 }
