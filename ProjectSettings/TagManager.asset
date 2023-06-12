@@ -47,12 +47,6 @@ TagManager:
   - name: Background 1
     uniqueID: 741997281
     locked: 0
-  - name: Background 2
-    uniqueID: 646584009
-    locked: 0
-  - name: Background 3
-    uniqueID: 1718647425
-    locked: 0
   - name: Playground 0
     uniqueID: 1599942733
     locked: 0
@@ -61,4 +55,7 @@ TagManager:
     locked: 0
   - name: DeadArea
     uniqueID: 2837396033
+    locked: 0
+  - name: Foreground 0
+    uniqueID: 2377288277
     locked: 0

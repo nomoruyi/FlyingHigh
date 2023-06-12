@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 48c8624a70707744e8f5a55a7bc0fd31
+guid: b16a6ce6ab1fdf4479dcc9795d150bb6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -42,12 +42,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 760
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -105,13 +105,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Surfingboat_0
+      name: terrain fill_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 387
-        height: 1086
+        y: 6
+        width: 760
+        height: 760
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,8 +119,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2fef52046a9b49a419e9a5dd494bebf8
-      internalID: 1033537693
+      spriteID: ba5593bdb8efbbf438f088d55c381dda
+      internalID: -1007974994
       vertices: []
       indices: 
       edges: []
@@ -136,7 +136,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Surfingboat_0: 1033537693
+      terrain fill_0: -1007974994
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
