@@ -22,22 +22,8 @@ public class PlayerLife : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Trap") || collision.gameObject.CompareTag("Enemy"))
         {
-            if(!isInvincible)
-            {
-                Die();
-            }
-           
+            GameManager.Instance.TakeDamage();
+           //Show that player has taken damage
         }
-    }
-
-    private void Die()
-    {
-        deathSoundEffect.Play();
-        RestartLevel();
-    }
-
-    private void RestartLevel()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

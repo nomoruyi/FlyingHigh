@@ -1,8 +1,7 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public enum ItemState { Sober, Jibit, Vodka, LSD, MDMA
-
-}
+public enum ItemState { Sober, Jibit, Vodka, LSD, MDMA}
 
 public class GameManager : MonoBehaviour
 {
@@ -21,8 +20,12 @@ public class GameManager : MonoBehaviour
 
     public int lifes = 3;
     public ItemState currentItemState = ItemState.Sober;
+    public float itemTime = 15.0f;
+    private float _itemTime = 0;
     [SerializeField]
     public AudioSource defaultBgMusic;
+    [SerializeField] 
+    private AudioSource deathSoundEffect;
 
     private void Awake()
     {
@@ -38,6 +41,12 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(_itemTime > 0 && currentItemState != ItemState.Sober)
+        {
+            _itemTime = Time.deltaTime;
+            Debug.Log(_itemTime)
+                ;
+        }
         if (lifes <= 0)
         {
             GameOver();
@@ -53,6 +62,7 @@ public class GameManager : MonoBehaviour
                 break;
              case ItemState.Jibit:
                 currentItemState= ItemState.Jibit;
+                _itemTime = itemTime;   
 
                 break;
             case ItemState.Vodka:
@@ -65,6 +75,31 @@ public class GameManager : MonoBehaviour
                 currentItemState= ItemState.MDMA;
                 break;
         }
+
+        Debug.Log(currentItemState.ToString());
+
+    }
+
+    public void TakeDamage()
+    {
+ 
+        lifes--;
+        if(lifes <= 0)
+        {
+            Die();
+        }
+
+    }
+
+    private void Die()
+    {
+        deathSoundEffect.Play();
+        RestartLevel();
+    }
+
+    private void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     void GameOver()

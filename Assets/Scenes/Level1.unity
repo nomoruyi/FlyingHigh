@@ -5579,6 +5579,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4614339318292957124, guid: fd360a62afa85fb459e78ba63b6bb559, type: 3}
+      propertyPath: m_TagString
+      value: Jibit
+      objectReference: {fileID: 0}
     - target: {fileID: 9154523472712585259, guid: fd360a62afa85fb459e78ba63b6bb559, type: 3}
       propertyPath: m_RootOrder
       value: 9

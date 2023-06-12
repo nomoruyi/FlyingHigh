@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,17 +14,26 @@ public class ItemCollector : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Coin"))
+    
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Item"))
         {
-            coins++;
-            CollectAndDestroy(collision.gameObject);
-       
-          //  cherriesText.text = "Cherries: " + coins;
-        }
-        else if (collision.gameObject.layer == LayerMask.GetMask("Item"))
-        {
-           // GameManager.Instance.SetItemState(ItemState());
-            CollectAndDestroy(collision.gameObject);
+            Debug.LogWarning("ITEM");
+            if (collision.gameObject.CompareTag("Coin"))
+            {
+                coins++;
+                CollectAndDestroy(collision.gameObject);
+
+                //  cherriesText.text = "Cherries: " + coins;
+            }
+            else
+            {
+                ItemState itemState = (ItemState)Enum.Parse(typeof(ItemState), collision.gameObject.tag);
+              
+                GameManager.Instance.SetItemState(itemState);
+                CollectAndDestroy(collision.gameObject);
+
+            }
+
 
         }
     }
