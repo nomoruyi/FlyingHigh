@@ -7,6 +7,10 @@ TagManager:
   - Coin
   - Enemy
   - Trap
+  - Jibit
+  - LSD
+  - MDMA
+  - Vodka
   layers:
   - Default
   - TransparentFX
@@ -15,7 +19,7 @@ TagManager:
   - Water
   - UI
   - Player
-  - 
+  - Item
   - 
   - 
   - 

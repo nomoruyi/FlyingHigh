@@ -15,14 +15,34 @@ public class ItemCollector : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Coin"))
         {
-            Debug.Log("Coin");
-            collectionSoundEffect.Play();
             coins++;
-
-            Destroy(collision.gameObject);
+            CollectAndDestroy(collision.gameObject);
        
           //  cherriesText.text = "Cherries: " + coins;
         }
+        else if (collision.gameObject.layer == LayerMask.GetMask("Item"))
+        {
+           // GameManager.Instance.SetItemState(ItemState());
+            CollectAndDestroy(collision.gameObject);
+
+        }
     }
 
+    private void CollectAndDestroy(GameObject gameObject)
+    {
+        Debug.Log("Item");
+        collectionSoundEffect.Play();
+      
+
+        Destroy(gameObject);
+    }
+
+    private void CollectAndDestroy(GameObject gameObject, AudioSource audioSource)
+    {
+        Debug.Log("Item");
+        audioSource.Play();
+        coins++;
+
+        Destroy(gameObject);
+    }
 }
