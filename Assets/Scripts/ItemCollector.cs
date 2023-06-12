@@ -10,18 +10,21 @@ public class ItemCollector : MonoBehaviour
 
    // [SerializeField] private Text cherriesText;
 
-    [SerializeField] private AudioSource collectionSoundEffect;
+    [SerializeField] private AudioSource collectCoinSound;
+    [SerializeField] private AudioSource collectItemSound;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-    
+        Debug.LogWarning("Collision");
+        Debug.LogWarning(collision.gameObject.layer);
+        Debug.LogWarning(LayerMask.NameToLayer("Item"));
         if (collision.gameObject.layer == LayerMask.NameToLayer("Item"))
         {
             Debug.LogWarning("ITEM");
             if (collision.gameObject.CompareTag("Coin"))
             {
                 coins++;
-                CollectAndDestroy(collision.gameObject);
+                CollectAndDestroy(collision.gameObject, collectCoinSound);
 
                 //  cherriesText.text = "Cherries: " + coins;
             }
@@ -30,21 +33,12 @@ public class ItemCollector : MonoBehaviour
                 ItemState itemState = (ItemState)Enum.Parse(typeof(ItemState), collision.gameObject.tag);
               
                 GameManager.Instance.SetItemState(itemState);
-                CollectAndDestroy(collision.gameObject);
+                CollectAndDestroy(collision.gameObject, collectItemSound);
 
             }
 
 
         }
-    }
-
-    private void CollectAndDestroy(GameObject gameObject)
-    {
-        Debug.Log("Item");
-        collectionSoundEffect.Play();
-      
-
-        Destroy(gameObject);
     }
 
     private void CollectAndDestroy(GameObject gameObject, AudioSource audioSource)

@@ -12,10 +12,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask jumpableGround;
 
     private float dirX = 0f;
+    private float dirY = 0f;
     [SerializeField] private float moveSpeed = 7f;
-    [SerializeField] private float jumpForce = 10f;
+    [SerializeField] private float jumpForce = 15f;
 
-    private enum MovementState { idle, running, jumping, falling }
+    private enum MovementState { idle, running, jumping, falling, flying }
 
     [SerializeField] private AudioSource jumpSoundEffect;
 
@@ -32,9 +33,33 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         dirX = Input.GetAxisRaw("Horizontal");
+        dirY = Input.GetAxisRaw("Vertical");
+
+        switch (GameManager.Instance.currentItemState)
+        {
+            case ItemState.Sober:
+                SoberMovement();
+                break;
+            case ItemState.Jibit:
+                JibitMovement();
+                break;
+            case ItemState.Vodka:
+
+                break;
+            case ItemState.LSD:
+
+                break;
+        }
+
+
+
+    }
+
+    //Sober
+    void SoberMovement()
+    {
+        moveSpeed = 7f;
         rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
-
-
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
@@ -43,10 +68,10 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
 
-        UpdateAnimationState();
+        SoberUpdateAnimation();
     }
 
-    private void UpdateAnimationState()
+    private void SoberUpdateAnimation()
     {
         MovementState state;
 
@@ -71,18 +96,83 @@ public class PlayerMovement : MonoBehaviour
             anim.SetBool("isJumping", false);
         }
 
-        if (rb.velocity.y > .1f)
+        if (rb.velocity.y > .01f)
         {
             state = MovementState.jumping;
             anim.SetBool("isJumping", true);
         }
-        else if (rb.velocity.y < -.1f)
+        else if (rb.velocity.y < -.01f)
         {
             state = MovementState.falling;
             anim.SetBool("isJumping", false);
         }
 
-      //  anim.SetInteger("state", (int)state);
+        //  anim.SetInteger("state", (int)state);
+    }
+
+    //Jibit
+    void JibitMovement()
+    {
+        moveSpeed = 5f;
+        rb.velocity = new Vector2(dirX * moveSpeed, dirY * moveSpeed);
+
+        JibitUpdateAnimation();
+    }
+
+    private void JibitUpdateAnimation()
+    {
+        MovementState state;
+
+        
+        if (IsGrounded())
+        {
+            if (dirX > 0f)
+            {
+                state = MovementState.running;
+                sprite.flipX = false;
+                anim.SetBool("isRunning", true);
+                anim.SetBool("isJumping", false);
+                anim.SetBool("isFlying", false);
+            }
+            else if (dirX < 0f)
+            {
+                state = MovementState.running;
+                sprite.flipX = true;
+                anim.SetBool("isRunning", true);
+                anim.SetBool("isJumping", false);
+                anim.SetBool("isFlying", false);
+            }
+            else
+            {
+                state = MovementState.idle;
+                anim.SetBool("isRunning", false);
+                anim.SetBool("isJumping", false);
+                anim.SetBool("isFlying", false);
+            }
+
+        }
+        else
+        {
+            state = MovementState.flying;
+
+            if (dirX > 0f)
+            {
+                sprite.flipX = false;
+            }
+            else if (dirX < 0f)
+            {
+                sprite.flipX = true;
+            }
+            Debug.LogWarning("FYLING")
+                ;
+            
+            anim.SetBool("isRunning", false);
+            anim.SetBool("isJumping", false);
+            anim.SetBool("isFlying", true);
+        }
+
+
+        //  anim.SetInteger("state", (int)state);
     }
 
     private bool IsGrounded()

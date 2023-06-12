@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum ItemState { Sober, Jibit, Vodka, LSD, MDMA}
+public enum ItemState { Sober, Jibit, Vodka, LSD}
 
 public class GameManager : MonoBehaviour
 {
@@ -44,8 +44,8 @@ public class GameManager : MonoBehaviour
         if(_itemTime > 0 && currentItemState != ItemState.Sober)
         {
             _itemTime = Time.deltaTime;
-            Debug.Log(_itemTime)
-                ;
+           // Debug.Log(_itemTime);
+                
         }
         if (lifes <= 0)
         {
@@ -71,9 +71,7 @@ public class GameManager : MonoBehaviour
             case ItemState.LSD:
                 currentItemState= ItemState.LSD;
                 break;
-            case ItemState.MDMA:
-                currentItemState= ItemState.MDMA;
-                break;
+      
         }
 
         Debug.Log(currentItemState.ToString());
