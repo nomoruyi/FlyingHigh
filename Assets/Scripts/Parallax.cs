@@ -5,6 +5,7 @@ using UnityEngine;
 public class Parallax : MonoBehaviour
 {
 
+    private float startposition; // Startposition des Sprites
     private float length;
     private float currentSpritePositionX;
     public GameObject cam;
@@ -14,21 +15,15 @@ public class Parallax : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentSpritePositionX = transform.position.x;
-        SpriteRenderer renderer = GetComponent<SpriteRenderer>();
-        length = renderer.bounds.size.x;
+        startposition = transform.position.x;
+        //length = GetComponent<SpriteRenderer>().bounds.size.x; // Endlänge von unsererem Sprite
     }
 
     // Update is called once per frame
     void Update()
     {
-        float temp = (cam.transform.position.x * (1 - parallaxEffect));
-        //Faktor, um den sich das Sprite in die entgegengesetzte Richtung bewegt 
-        float dist = (cam.transform.position.x * -parallaxEffect);
+        float dist = (cam.transform.position.x * -parallaxEffect); // Berechnung, wie weit wir von unserem Startpunkt entfernt sind in negativer Richtung (x=5 * 0.2 = 1)
 
-        transform.position = new Vector3(currentSpritePositionX + dist, transform.position.y, transform.position.z);
-
-        if (temp > currentSpritePositionX + length) currentSpritePositionX += length;
-        else if (temp < currentSpritePositionX - length) currentSpritePositionX -= length;
+        transform.position = new Vector3(startposition + dist, transform.position.y, transform.position.z); // Bewegung der Kamerera
     }
 }
