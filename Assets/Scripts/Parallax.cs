@@ -10,12 +10,15 @@ public class Parallax : MonoBehaviour
     public GameObject cam;
 
     [SerializeField][Range(0f, 1f)] float parallaxEffect;
-    //Sven hat einen fetten Cock
+
     // Start is called before the first frame update
     void Start()
     {
         startposition = transform.position.x;
-        length = GetComponent<SpriteRenderer>().bounds.size.x;
+        SpriteRenderer renderer = GetComponent<SpriteRenderer>();
+        Debug.Log("Hurensohn: " + renderer.gameObject.name)
+        ;
+        length = renderer.bounds.size.x;
 
     }
 
