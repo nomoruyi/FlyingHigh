@@ -11,6 +11,8 @@ TagManager:
   - LSD
   - Vodka
   - GameOver
+  - Vodka-Bg
+  - LSD-Bg
   layers:
   - Default
   - TransparentFX

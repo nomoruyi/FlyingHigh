@@ -15,9 +15,7 @@ public class ItemCollector : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.LogWarning("Collision");
-        Debug.LogWarning(collision.gameObject.layer);
-        Debug.LogWarning(LayerMask.NameToLayer("Item"));
+       
         if (collision.gameObject.layer == LayerMask.NameToLayer("Item"))
         {
             Debug.LogWarning("ITEM");

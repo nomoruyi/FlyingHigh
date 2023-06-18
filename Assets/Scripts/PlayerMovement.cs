@@ -29,12 +29,15 @@ public class PlayerMovement : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(UnityEngine.Collider2D collision)
     {
-        if(collision.gameObject.tag == "GameOver")
+        Debug.LogWarning("Collision");
+
+        if (collision.gameObject.tag == "GameOver")
         {
+            Debug.Log("Sesh");
             GameManager.Instance.Die();
-}
+        }
     }
 
     // Update is called once per frame
@@ -132,7 +135,7 @@ public class PlayerMovement : MonoBehaviour
     {
         MovementState state;
 
-        
+
         if (IsGrounded())
         {
             if (dirX > 0f)
@@ -174,7 +177,7 @@ public class PlayerMovement : MonoBehaviour
             }
             Debug.LogWarning("FYLING")
                 ;
-            
+
             anim.SetBool("isRunning", false);
             anim.SetBool("isJumping", false);
             anim.SetBool("isFlying", true);
@@ -249,7 +252,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.Log("Jump");
             jumpSoundEffect.Play();
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce*1.5f);
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce * 1.5f);
         }
 
         LSDUpdateAnimation();

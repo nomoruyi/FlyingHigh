@@ -23,6 +23,11 @@ public class GameManager : MonoBehaviour
     public float itemTime = 15.0f;
     private float _itemTime = 0;
     [SerializeField]
+    public GameObject vodkaBg;
+    [SerializeField]
+    public GameObject lsdBg;
+
+    [SerializeField]
     public AudioSource defaultBgMusic;
     [SerializeField] 
     private AudioSource deathSoundEffect;
@@ -59,17 +64,24 @@ public class GameManager : MonoBehaviour
         {
             case ItemState.Sober:  
                 currentItemState = ItemState.Sober;
+               vodkaBg.SetActive(false);
+               lsdBg.SetActive(false);
                 break;
              case ItemState.Jibit:
                 currentItemState= ItemState.Jibit;
-                _itemTime = itemTime;   
-
+                _itemTime = itemTime;
+                vodkaBg.SetActive(false);
+                lsdBg.SetActive(false);
                 break;
             case ItemState.Vodka:
                 currentItemState = ItemState.Vodka;
+                vodkaBg.SetActive(true);
+                lsdBg.SetActive(false);
                 break;
             case ItemState.LSD:
                 currentItemState= ItemState.LSD;
+                vodkaBg.SetActive(false);
+                lsdBg.SetActive(true);
                 break;
       
         }
