@@ -13,8 +13,8 @@ public class PlayerMovement : MonoBehaviour
 
     private float dirX = 0f;
     private float dirY = 0f;
-    [SerializeField] private float moveSpeed = 7f;
-    [SerializeField] private float jumpForce = 15f;
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float jumpForce;
 
     private enum MovementState { idle, running, jumping, falling, flying }
 
@@ -27,6 +27,14 @@ public class PlayerMovement : MonoBehaviour
         coll = GetComponent<BoxCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "GameOver")
+        {
+            GameManager.Instance.Die();
+}
     }
 
     // Update is called once per frame
@@ -44,10 +52,10 @@ public class PlayerMovement : MonoBehaviour
                 JibitMovement();
                 break;
             case ItemState.Vodka:
-
+                VodkaMovement();
                 break;
             case ItemState.LSD:
-
+                LSDMovement();
                 break;
         }
 
@@ -74,6 +82,7 @@ public class PlayerMovement : MonoBehaviour
     private void SoberUpdateAnimation()
     {
         MovementState state;
+        anim.SetBool("isFlying", false);
 
         if (dirX > 0f)
         {
@@ -174,6 +183,118 @@ public class PlayerMovement : MonoBehaviour
 
         //  anim.SetInteger("state", (int)state);
     }
+
+    //Vodka
+    void VodkaMovement()
+    {
+        moveSpeed = 6f;
+        rb.velocity = new Vector2(-dirX * moveSpeed, rb.velocity.y);
+
+        if (Input.GetButtonDown("Jump") && IsGrounded())
+        {
+            Debug.Log("Jump");
+            jumpSoundEffect.Play();
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce * 0.8f);
+        }
+
+        VodkaUpdateAnimation();
+    }
+
+    private void VodkaUpdateAnimation()
+    {
+        MovementState state;
+        anim.SetBool("isFlying", false);
+        if (-dirX > 0f)
+        {
+            state = MovementState.running;
+            sprite.flipX = false;
+            anim.SetBool("isRunning", true);
+            anim.SetBool("isJumping", false);
+        }
+        else if (-dirX < 0f)
+        {
+            state = MovementState.running;
+            sprite.flipX = true;
+            anim.SetBool("isRunning", true);
+            anim.SetBool("isJumping", false);
+        }
+        else
+        {
+            state = MovementState.idle;
+            anim.SetBool("isRunning", false);
+            anim.SetBool("isJumping", false);
+        }
+
+        if (rb.velocity.y > .01f)
+        {
+            state = MovementState.jumping;
+            anim.SetBool("isJumping", true);
+        }
+        else if (rb.velocity.y < -.01f)
+        {
+            state = MovementState.falling;
+            anim.SetBool("isJumping", false);
+        }
+
+        //  anim.SetInteger("state", (int)state);
+    }
+
+    //LSD
+    void LSDMovement()
+    {
+        moveSpeed = 7f;
+        rb.velocity = new Vector2(dirX * moveSpeed * 2, rb.velocity.y);
+
+        if (Input.GetButtonDown("Jump") && IsGrounded())
+        {
+            Debug.Log("Jump");
+            jumpSoundEffect.Play();
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce*1.5f);
+        }
+
+        LSDUpdateAnimation();
+    }
+
+    private void LSDUpdateAnimation()
+    {
+        MovementState state;
+        anim.SetBool("isFlying", false);
+
+        if (dirX > 0f)
+        {
+            state = MovementState.running;
+            sprite.flipX = false;
+            anim.SetBool("isRunning", true);
+            anim.SetBool("isJumping", false);
+        }
+        else if (dirX < 0f)
+        {
+            state = MovementState.running;
+            sprite.flipX = true;
+            anim.SetBool("isRunning", true);
+            anim.SetBool("isJumping", false);
+        }
+        else
+        {
+            state = MovementState.idle;
+            anim.SetBool("isRunning", false);
+            anim.SetBool("isJumping", false);
+        }
+
+        if (rb.velocity.y > .01f)
+        {
+            state = MovementState.jumping;
+            anim.SetBool("isJumping", true);
+        }
+        else if (rb.velocity.y < -.01f)
+        {
+            state = MovementState.falling;
+            anim.SetBool("isJumping", false);
+        }
+
+        //  anim.SetInteger("state", (int)state);
+    }
+
 
     private bool IsGrounded()
     {

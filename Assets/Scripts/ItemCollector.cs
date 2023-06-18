@@ -31,14 +31,21 @@ public class ItemCollector : MonoBehaviour
             else
             {
                 ItemState itemState = (ItemState)Enum.Parse(typeof(ItemState), collision.gameObject.tag);
-              
-                GameManager.Instance.SetItemState(itemState);
+
+                StartCoroutine(SetGameState(itemState))
+                ;
                 CollectAndDestroy(collision.gameObject, collectItemSound);
 
             }
 
 
         }
+    }
+
+    private IEnumerator SetGameState(ItemState itemState) {
+        GameManager.Instance.SetItemState(itemState);
+        yield return new WaitForSeconds(10);
+        GameManager.Instance.SetItemState(ItemState.Sober);
     }
 
     private void CollectAndDestroy(GameObject gameObject, AudioSource audioSource)
