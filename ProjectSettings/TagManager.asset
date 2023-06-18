@@ -62,6 +62,9 @@ TagManager:
   - name: PlayerLayer
     uniqueID: 4109237355
     locked: 0
+  - name: ItemBGLayer
+    uniqueID: 3823000137
+    locked: 0
   - name: DeadArea
     uniqueID: 2837396033
     locked: 0

@@ -42,7 +42,7 @@ public class ItemCollector : MonoBehaviour
 
     private IEnumerator SetGameState(ItemState itemState) {
         GameManager.Instance.SetItemState(itemState);
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(7);
         GameManager.Instance.SetItemState(ItemState.Sober);
     }
 
