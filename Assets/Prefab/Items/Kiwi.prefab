@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5072374355368073830}
   - component: {fileID: 5072374355368073831}
   - component: {fileID: 5072374355368073826}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Kiwi
   m_TagString: Coin
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 5072374355368073827}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.8244613, y: -1.2948489, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -72,8 +72,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1917679019
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 4138223980208024357, guid: 03fcb1ab45e006c4abdc712210ea73c8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private void Die()
+    public void Die()
     {
         deathSoundEffect.Play();
         RestartLevel();
