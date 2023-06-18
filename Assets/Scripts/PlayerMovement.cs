@@ -29,11 +29,11 @@ public class PlayerMovement : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    private void OnTriggerEnter2D(UnityEngine.Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.LogWarning("Collision");
 
-        if (collision.gameObject.tag == "GameOver")
+        if (collision.gameObject.tag == "GameOver" || collision.gameObject.tag == "Enemy")
         {
             Debug.Log("Sesh");
             GameManager.Instance.Die();

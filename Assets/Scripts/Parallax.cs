@@ -8,8 +8,9 @@ public class Parallax : MonoBehaviour
     private float length;
     private float startposition;
     public GameObject cam;
-    public float parallaxEffect;
 
+    [SerializeField][Range(0f, 1f)] float parallaxEffect;
+    //Sven hat einen fetten Cock
     // Start is called before the first frame update
     void Start()
     {
