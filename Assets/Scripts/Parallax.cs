@@ -6,8 +6,6 @@ public class Parallax : MonoBehaviour
 {
 
     private float startposition; // Startposition des Sprites
-    private float length;
-    private float currentSpritePositionX;
     public GameObject cam;
 
     [SerializeField][Range(0f, 1f)] float parallaxEffect;
