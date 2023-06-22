@@ -21,12 +21,12 @@ public class WaveAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer -= Time.deltaTime;
-        if(timer <= 0) {
+        timer += Time.deltaTime;
+        if(timer >= timeToSwitch) {
         wave1Active = !wave1Active;
             wave1.SetActive(wave1Active);
             wave2.SetActive(!wave1Active);
-            timer = timeToSwitch;
+            timer = 0f;
         }
 
 

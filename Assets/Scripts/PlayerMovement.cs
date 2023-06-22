@@ -161,8 +161,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 sprite.flipX = true;
             }
-            Debug.LogWarning("FYLING")
-                ;
 
             anim.SetBool("isRunning", false);
             anim.SetBool("isJumping", false);

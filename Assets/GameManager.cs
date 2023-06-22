@@ -1,5 +1,8 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
+using System.Collections;
 
 public enum ItemState { Sober, Jibit, Vodka, LSD}
 
@@ -19,11 +22,11 @@ public class GameManager : MonoBehaviour
 
 
     public int lifes = 3;
-    private int coins;
-    public int Coins{
-        get; set;
-        }
-   
+    public TMP_Text lifesText;
+ 
+    public int points = 0;
+
+    public TMP_Text pointsText;
     public ItemState currentItemState = ItemState.Sober;
     public float itemTime = 15.0f;
     private float _itemTime = 0;
@@ -45,7 +48,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        UpdateHUD();
     }
 
     // Update is called once per frame
@@ -61,6 +64,21 @@ public class GameManager : MonoBehaviour
         {
             GameOver();
         }
+
+        UpdateHUD();
+    }
+
+    public IEnumerator SetGameState(ItemState itemState)
+    {
+        SetItemState(itemState);
+        yield return new WaitForSeconds(7);
+        SetItemState(ItemState.Sober);
+    }
+
+    private void UpdateHUD()
+    {
+        lifesText.text = lifes.ToString();
+        pointsText.text = points.ToString();
     }
 
     public void SetItemState(ItemState state)

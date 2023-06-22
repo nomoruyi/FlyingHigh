@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemCollected : MonoBehaviour
+public class CoinsCollected : MonoBehaviour
 {
     [SerializeField] public GameObject kiwi;
     [SerializeField] public GameObject collected;
@@ -27,9 +27,9 @@ public class ItemCollected : MonoBehaviour
         {
             kiwi.SetActive(false);
             collected.SetActive(true);
-            Debug.Log("Item");
+            Debug.Log("Coin");
             collectCoinSound.Play();
-            GameManager.Instance.Coins = 20;
+            GameManager.Instance.points += 20;
 
             StartCoroutine(CollectAndDestroy());
         }
