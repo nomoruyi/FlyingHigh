@@ -26,6 +26,10 @@ public class ItemCollector : MonoBehaviour
 
                 //  cherriesText.text = "Cherries: " + coins;
             }
+            else if(collision.gameObject.CompareTag("FinishLine"))
+            {
+                GameManager.Instance.Die();
+            }
             else
             {
                 ItemState itemState = (ItemState)Enum.Parse(typeof(ItemState), collision.gameObject.tag);

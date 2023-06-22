@@ -84,38 +84,32 @@ public class PlayerMovement : MonoBehaviour
 
     private void SoberUpdateAnimation()
     {
-        MovementState state;
         anim.SetBool("isFlying", false);
 
         if (dirX > 0f)
         {
-            state = MovementState.running;
             sprite.flipX = false;
             anim.SetBool("isRunning", true);
             anim.SetBool("isJumping", false);
         }
         else if (dirX < 0f)
         {
-            state = MovementState.running;
             sprite.flipX = true;
             anim.SetBool("isRunning", true);
             anim.SetBool("isJumping", false);
         }
         else
         {
-            state = MovementState.idle;
             anim.SetBool("isRunning", false);
             anim.SetBool("isJumping", false);
         }
 
         if (rb.velocity.y > .01f)
         {
-            state = MovementState.jumping;
             anim.SetBool("isJumping", true);
         }
         else if (rb.velocity.y < -.01f)
         {
-            state = MovementState.falling;
             anim.SetBool("isJumping", false);
         }
 
@@ -133,14 +127,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void JibitUpdateAnimation()
     {
-        MovementState state;
-
-
         if (IsGrounded())
         {
             if (dirX > 0f)
             {
-                state = MovementState.running;
                 sprite.flipX = false;
                 anim.SetBool("isRunning", true);
                 anim.SetBool("isJumping", false);
@@ -148,7 +138,6 @@ public class PlayerMovement : MonoBehaviour
             }
             else if (dirX < 0f)
             {
-                state = MovementState.running;
                 sprite.flipX = true;
                 anim.SetBool("isRunning", true);
                 anim.SetBool("isJumping", false);
@@ -156,7 +145,6 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                state = MovementState.idle;
                 anim.SetBool("isRunning", false);
                 anim.SetBool("isJumping", false);
                 anim.SetBool("isFlying", false);
@@ -165,8 +153,6 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            state = MovementState.flying;
-
             if (dirX > 0f)
             {
                 sprite.flipX = false;
@@ -184,7 +170,6 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-        //  anim.SetInteger("state", (int)state);
     }
 
     //Vodka
@@ -205,37 +190,31 @@ public class PlayerMovement : MonoBehaviour
 
     private void VodkaUpdateAnimation()
     {
-        MovementState state;
         anim.SetBool("isFlying", false);
         if (-dirX > 0f)
         {
-            state = MovementState.running;
             sprite.flipX = false;
             anim.SetBool("isRunning", true);
             anim.SetBool("isJumping", false);
         }
         else if (-dirX < 0f)
         {
-            state = MovementState.running;
             sprite.flipX = true;
             anim.SetBool("isRunning", true);
             anim.SetBool("isJumping", false);
         }
         else
         {
-            state = MovementState.idle;
             anim.SetBool("isRunning", false);
             anim.SetBool("isJumping", false);
         }
 
         if (rb.velocity.y > .01f)
         {
-            state = MovementState.jumping;
             anim.SetBool("isJumping", true);
         }
         else if (rb.velocity.y < -.01f)
         {
-            state = MovementState.falling;
             anim.SetBool("isJumping", false);
         }
 
@@ -260,38 +239,32 @@ public class PlayerMovement : MonoBehaviour
 
     private void LSDUpdateAnimation()
     {
-        MovementState state;
         anim.SetBool("isFlying", false);
 
         if (dirX > 0f)
         {
-            state = MovementState.running;
             sprite.flipX = false;
             anim.SetBool("isRunning", true);
             anim.SetBool("isJumping", false);
         }
         else if (dirX < 0f)
         {
-            state = MovementState.running;
             sprite.flipX = true;
             anim.SetBool("isRunning", true);
             anim.SetBool("isJumping", false);
         }
         else
         {
-            state = MovementState.idle;
             anim.SetBool("isRunning", false);
             anim.SetBool("isJumping", false);
         }
 
         if (rb.velocity.y > .01f)
         {
-            state = MovementState.jumping;
             anim.SetBool("isJumping", true);
         }
         else if (rb.velocity.y < -.01f)
         {
-            state = MovementState.falling;
             anim.SetBool("isJumping", false);
         }
 
