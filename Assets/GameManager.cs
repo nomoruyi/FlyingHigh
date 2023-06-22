@@ -19,6 +19,11 @@ public class GameManager : MonoBehaviour
 
 
     public int lifes = 3;
+    private int coins;
+    public int Coins{
+        get; set;
+        }
+   
     public ItemState currentItemState = ItemState.Sober;
     public float itemTime = 15.0f;
     private float _itemTime = 0;

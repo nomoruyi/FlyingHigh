@@ -19,12 +19,12 @@ public class ItemCollector : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("Item"))
         {
             Debug.LogWarning("ITEM");
-            if (collision.gameObject.CompareTag("Coin"))
+            if (collision.gameObject.CompareTag("Coin")) return;
+          
+      
+            if(collision.gameObject.CompareTag("FinishLine"))
             {
-                coins++;
-                CollectAndDestroy(collision.gameObject, collectCoinSound);
-
-                //  cherriesText.text = "Cherries: " + coins;
+                GameManager.Instance.Die();
             }
             else
             {
