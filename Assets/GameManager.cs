@@ -71,8 +71,10 @@ public class GameManager : MonoBehaviour
     public IEnumerator SetGameState(ItemState itemState)
     {
         SetItemState(itemState);
+        Debug.Log("Item state SET");
         yield return new WaitForSeconds(7);
         SetItemState(ItemState.Sober);
+        Debug.Log("Item state BACK TO NORMAL");
     }
 
     private void UpdateHUD()

@@ -40,7 +40,7 @@ public class ItemsCollected : MonoBehaviour
     {
         gameObject.GetComponent<SpriteRenderer>().forceRenderingOff = true;
         Debug.LogWarning("Should Destroy after 1 sec");
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(8);
         Debug.LogError("Destroyed");
         Destroy(gameObject);
     }
